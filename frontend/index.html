@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>License Dashboard</title>
+</head>
+<body>
+<h2>License Dashboard</h2>
+<table border="1" id="table"></table>
+
+<script>
+fetch("http://localhost:8000/licenses")
+.then(r => r.json())
+.then(data => {
+  const t = document.getElementById("table");
+  data.forEach(x => {
+    const row = `<tr><td>${x.machine}</td><td>${x.name}</td><td>${x.version}</td></tr>`;
+    t.innerHTML += row;
+  });
+});
+</script>
+</body>
+</html>
